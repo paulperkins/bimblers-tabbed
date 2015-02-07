@@ -1,0 +1,147 @@
+/*
+ Theme Name:   Bimblers Tabbed
+ Theme URI:    http://bimblers.com/wp_themes
+ Description:  Bimbler Tabbed Theme, derived from Hueman; events are displayed in tabbed format.
+ Author:       Paul Perkins
+ Author URI:   http://www.paulperkins.net
+ Template:     hueman
+ Version:      1.0.0
+ Tags:         
+ Text Domain:  bimbler
+*/
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+/* PP - Google map fix: make the zoom controls visible. */
+.tribe-events-venue-map img { max-width: inherit !important; }
+.bimbler-locator img { max-width: inherit !important; }
+#bimbler-next-ride-map img { max-width: inherit !important; }
+
+
+/* PP - Make NGG responsive. */
+.ngg-slideshow, .ngg-slideshow img{
+  max-width:100%;
+  height: auto;
+}
+
+.ngg-galleryoverview, .ngg-galleryoverview img{
+  max-width:100%;
+  height: auto;
+}
+
+.featured,
+.featured.flexslider { 
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;}
+	
+.alx-tabs-nav.tab-count-5 li { width: 20%; }
+
+::selection { background-color: #dd9933; }
+::-moz-selection { background-color: #dd9933; }
+
+/* Show text. 
+.alx-tabs-nav li a span { display: block; } */
+
+/*.post-nav li a:hover i,
+.widget_rss ul li a,
+.widget_calendar a,
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a { color: #dd9933; } */ 
+
+/*.sidebar-top,
+.sidebar-toggle,
+.post-comments,
+.jp-play-bar,
+.jp-volume-bar-value,
+.widget_calendar caption { background-color: #dd9933; } */
+
+.alx-tabs-nav li.active a { border-bottom-color: #dd9933;  }
+.post-comments span:before { border-right-color: #dd9933; }				
+
+
+.alx-tabs-nav li.active a, #footer .alx-tabs-nav li.active a, .comment-tabs li.active a, .wp-pagenavi a:hover, .wp-pagenavi a:active, .wp-pagenavi span.current 
+{
+border-bottom-color: #dd9933!important;
+}
+
+.alx-tabs-nav li a
+ { color: #777777!important;}
+ 
+.bimbler-badge a i
+ { font-size: 30px;}
+ 
+/*.bimbler-badge a span
+{ display:block;}
+ 
+@media only screen and (max-width: 719px) {
+	.bimbler-badge a i
+ 	{ font-size: 30px;}
+	
+	.bimbler-badge a span
+ 	{ display: block;}
+}*/
+ 
+ 
+ 
+.alx-tab img {display:inline; width: auto; }
+
+/* Make buttons nice again. */
+/*  base : forms
+/* ------------------------------------ */
+input, textarea, button, select, label { font-family: inherit; }
+.themeform input,
+.themeform textarea,
+.themeform button,
+.themeform select,
+.themeform label { font-size: 14px; }
+.themeform input::-moz-focus-inner, 
+.themeform button::-moz-focus-inner { border: 0; padding: 0; }
+.themeform input[type="text"],
+.themeform input[type="password"],
+.themeform input[type="email"],
+.themeform input[type="submit"],
+.themeform button, 
+.themeform textarea { margin: 0; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-border-radius: 0; border-radius: 0; }
+.themeform input, 
+.themeform textarea, 
+.themeform button { -moz-appearance: none; -webkit-appearance: none; -moz-transition: all .2s ease; -webkit-transition: all .2s ease; transition: all .2s ease; }
+.themeform input[type="checkbox"] { -moz-appearance: checkbox; -webkit-appearance: checkbox; }
+.themeform input[type="radio"] { -moz-appearance: radio; -webkit-appearance: radio; }
+.themeform label { font-weight: 600; color: #444; }
+.themeform input[type="text"], 
+.themeform input[type="password"], 
+.themeform input[type="email"], 
+.themeform textarea { background: #fff; border: 2px solid #ddd; color: #777; display: block; max-width: 100%; outline: none; padding: 7px 8px; }
+.themeform input[type="text"]:focus, 
+.themeform input[type="password"]:focus, 
+.themeform input[type="email"]:focus, 
+.themeform textarea:focus { border-color: #ccc; color: #444; -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1); box-shadow: 0 0 3px rgba(0,0,0,0.1); }
+.themeform label .required { color: #3b8dbd; }
+.themeform input[type="submit"],
+.themeform button[type="submit"] { background: #3b8dbd; color: #fff; padding: 8px 14px; font-weight: 600; display: inline-block; border: none; cursor: pointer; -webkit-border-radius: 3px; border-radius: 3px; }
+.themeform input[type="submit"]:hover,
+.themeform button[type="submit"]:hover { background: #444; }
+
+
+.themeform input[type="button"],
+.themeform button[type="button"] { background: #3b8dbd; color: #fff; padding: 8px 14px; font-weight: 600; display: inline-block; border: none; cursor: pointer; -webkit-border-radius: 3px; border-radius: 3px; }
+.themeform input[type="button"]:hover,
+.themeform button[type="button"]:hover { background: #444; }
+
+
+
+/*.alx-tabs-nav li a {
+margin-top: -3px;
+border-bottom-width: 0px;
+} */
+
+/* Make sidebar align with event page tabs. Works, but then does not align with standard page title.*/
+/*.sidebar-top {
+padding: 18px 34px;
+} */

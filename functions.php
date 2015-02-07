@@ -1,0 +1,51 @@
+<?php
+
+/*  Enqueue css
+ /* ------------------------------------ */
+if ( ! function_exists( 'bimbler_styles' ) ) {
+
+	function bimbler_styles() {
+		wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+		wp_enqueue_style( 'child-style', get_stylesheet_uri(), array('parent-style')  );
+		
+		wp_enqueue_style('font-awesome-min', get_stylesheet_directory_uri().  '/font-awesome-4.2.0/css/font-awesome.min.css');
+	}
+
+}
+add_action( 'wp_enqueue_scripts', 'bimbler_styles' );
+
+
+/* PP - Added. Enable WYSIWYG editing in the Visual Editor. */
+//add_editor_style('style.css');
+
+/* PP - Added. Disable menu bar. */
+if ( ! current_user_can( 'manage_options' ) ) {
+	show_admin_bar( false );
+}
+
+
+// Encourage facebook to use the bimbler flag image as the preferred preview image.
+function bimbler_add_og_image()
+{
+	$output  = '<meta property="og:image" content="http://bimblers.com/wp-content/uploads/2014/04/bimbler_flag-520x245.jpeg" />' . PHP_EOL;
+	$output .= '<meta property="og:url" content="http://bimblers.com" />' . PHP_EOL;
+	$output .= '<meta property="og:type" content="website" />' . PHP_EOL;
+	$output .= '<meta property="og:title" content="bimblers.com - Brisbane Bimblers Cycling" />' . PHP_EOL;
+	$output .= '<meta property="og:description" content="The Brisbane Bimblers’ Cycling Group is a light-hearted group of cyclists who love to get out and about on two wheels, but don’t take themselves too seriously." />' . PHP_EOL;
+	
+	echo $output;
+}
+
+add_action('wp_head','bimbler_add_og_image');
+
+
+//add_theme_support( 'post-thumbnails', array( 'post', 'page', 'movie', 'product' ) );
+
+/* PP - Added. Disable Event GCal and iCal links on event pages. */
+remove_action('tribe_events_single_event_after_the_content', array('TribeiCal', 'single_event_links'));
+remove_filter('tribe_events_after_footer', array('TribeiCal', 'maybe_add_link'), 10, 1);
+
+// Patch for Ghost vuln.
+add_filter( 'xmlrpc_methods' , function( $methods ) { unset( $methods[ 'pingback.ping' ] ); return $methods; } );
+
+
