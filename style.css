@@ -89,7 +89,7 @@ border-bottom-color: #dd9933!important;
  
  
  
-.alx-tab img {display:inline; width: auto; }
+.alx-tab img {display:inline; width: auto; } 
 
 /* Make buttons nice again. */
 /*  base : forms
@@ -145,3 +145,5 @@ border-bottom-width: 0px;
 /*.sidebar-top {
 padding: 18px 34px;
 } */
+
+

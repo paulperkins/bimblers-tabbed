@@ -8,7 +8,8 @@ if ( ! function_exists( 'bimbler_styles' ) ) {
 		wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 		wp_enqueue_style( 'child-style', get_stylesheet_uri(), array('parent-style')  );
 		
-		wp_enqueue_style('font-awesome-min', get_stylesheet_directory_uri().  '/font-awesome-4.2.0/css/font-awesome.min.css');
+		//wp_enqueue_style('font-awesome-min', get_stylesheet_directory_uri().  '/font-awesome-4.2.0/css/font-awesome.min.css');
+		wp_enqueue_style('font-awesome-min', get_stylesheet_directory_uri().  '/font-awesome-4.3.0/css/font-awesome.min.css');
 	}
 
 }
