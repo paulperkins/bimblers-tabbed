@@ -288,8 +288,13 @@ Template Description: A custom template to display the Bimbler sidebar.
 	
 		<header class="row">
 		
-			<div class="col-sm-2 bimbler-avatar-large" style="xbackground-image: url('<?php echo get_avatar_img($avatar); ?>');" data-avatar-count="<?php echo get_rides_attended ($user->ID); ?>">
-				<?php echo $avatar; ?>
+			<div class="col-sm-2 xbimbler-avatar-large" xstyle="background-image: url('<?php //echo get_avatar_img($avatar); ?>');" xdata-avatar-count="<?php echo get_rides_attended ($user->ID); ?>">
+				<?php //echo $avatar; 
+
+					$avatar_div = '<div class="avatar-profile-clipped" style="background-image: url(\'' . get_avatar_img($avatar) . '\');" data-avatar-count="' . get_rides_attended ($user->ID)  . '"></div>';
+
+					echo $avatar_div;
+				?>
 			</div>
 		
 			<div class="col-sm-8">
