@@ -40,6 +40,31 @@ function bimbler_add_og_image()
 add_action('wp_head','bimbler_add_og_image');
 
 
+
+/*
+ * Generates CSS elements which contain the 'Primary Color' setting in the Theme's 'Styling' configuration.
+ */
+function bimbler_add_dynamic_style () {
+	
+	$output = '<style type="text/css">' . PHP_EOL;
+	
+	$colour = ot_get_option('color-1');
+	
+	
+	$output .= '.alx-tabs-nav li.active a { border-bottom-color: ' . $colour . ';  }' . PHP_EOL;
+	$output .= '.post-comments span:before { border-right-color: ' . $colour . '; }' . PHP_EOL;
+	
+	$output .= '.alx-tabs-nav li.active a, #footer .alx-tabs-nav li.active a, .comment-tabs li.active a, .wp-pagenavi a:hover, .wp-pagenavi a:active, .wp-pagenavi span.current {' . PHP_EOL;
+	$output .= '	border-bottom-color: ' . $colour . '!important;' . PHP_EOL;
+	$output .= '}' . PHP_EOL;
+	
+	$output .= '</style>' . PHP_EOL;
+
+	echo $output;
+}
+
+add_action('wp_head','bimbler_add_dynamic_style');
+
 //add_theme_support( 'post-thumbnails', array( 'post', 'page', 'movie', 'product' ) );
 
 /* PP - Added. Disable Event GCal and iCal links on event pages. */
