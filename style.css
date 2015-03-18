@@ -61,14 +61,14 @@
 .jp-volume-bar-value,
 .widget_calendar caption { background-color: #dd9933; } */
 
-/*.alx-tabs-nav li.active a { border-bottom-color: #dd9933;  }
+.alx-tabs-nav li.active a { border-bottom-color: #dd9933;  }
 .post-comments span:before { border-right-color: #dd9933; }				
 
 
 .alx-tabs-nav li.active a, #footer .alx-tabs-nav li.active a, .comment-tabs li.active a, .wp-pagenavi a:hover, .wp-pagenavi a:active, .wp-pagenavi span.current 
 {
 border-bottom-color: #dd9933!important;
-}*/
+}
 
 .alx-tabs-nav li a
  { color: #777777!important;}
