@@ -147,3 +147,16 @@ padding: 18px 34px;
 } */
 
 
+/* ------------------------------------------------------------------------- *
+ *  Mobile (Mid Res) : 719px > 0px (480px & 320px)
+/* ------------------------------------------------------------------------- */
+@media only screen and (max-width: 719px) {
+	/* Don't show social links on phone layout. */
+	/* hide */
+	.sidebar-top,
+	.site-description,
+	.image-caption { display: none; }
+}
+	
+	
+
