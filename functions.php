@@ -58,6 +58,12 @@ function bimbler_add_dynamic_style () {
 	$output .= '	border-bottom-color: ' . $colour . '!important;' . PHP_EOL;
 	$output .= '}' . PHP_EOL;
 	
+	
+	/* Make the current day in the events calendar view styled as a Bimbler orange background. */
+	$output .= '.tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"] {' . PHP_EOL;
+	$output .= '		background-color: ' . $colour . ';' . PHP_EOL;
+	$output .= '}' . PHP_EOL;
+	
 	$output .= '</style>' . PHP_EOL;
 
 	echo $output;
