@@ -7,8 +7,8 @@ $featured = new WP_Query(
 		'update_post_term_cache'	=> false,
 		'ignore_sticky_posts'		=> 1,
 		'posts_per_page'			=> 1, // PP
-		'cat'						=> 79// 'Featured Ride' //ot_get_option('featured-category')
-	)
+		'category_name'				=> 'Featured Ride' //ot_get_option('featured-category')
+)
 );
 ?>
 <?php 
