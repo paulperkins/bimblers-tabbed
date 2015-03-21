@@ -133,7 +133,7 @@ function show_ride_page () {
 
 		//var_dump ($post_object->post_content);
 		
-		if (!current_user_can ('manage_options')) {
+		if (current_user_can ('manage_options')) {
 			echo '<h3>Ride Details <a href="' . site_url () . '/wp-admin/post.php?post=' . $meta_ride_page . '&action=edit" target="_external"><i class="fa fa-pencil"></i></a></h3>';
 		} else {
 			echo '<h3>Ride Details</h3>';
