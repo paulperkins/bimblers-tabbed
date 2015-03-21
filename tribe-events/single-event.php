@@ -33,6 +33,14 @@ function get_ride_page ($post_id) {
 	return $meta_ride_page;
 }
 
+function bimbler_get_avatar_img ($avatar) {
+
+	preg_match( '#src=["|\'](.+)["|\']#Uuis', $avatar, $matches );
+
+	return ( isset( $matches[1] ) && ! empty( $matches[1]) ) ?
+	(string) $matches[1] : '';
+}
+
 /**
  * Adds the photo gallery to the event.
  *
@@ -238,133 +246,132 @@ function show_rsvp_table () {
 		}
 
 		$html .= '<div id="AvatarListSide" class="AvatarListSide-wrap">';
-		//$html .= '	<form method="post" id="commentform" class="commentform" enctype="multipart/form-data">';
 
-	/*if ((0 == $rsvps_y) || (0 == $rsvps_n))// || (-1 == $count_rsvps))
-	{
-		$html .= '<p>Error in SQL.</p>';
-	}
-	else */ 
 		if ((0 == count ($rsvps_y)) && (0 == count ($rsvps_n)))
-	{
-		$html .= '<p>No RSVPs yet.</p>';
-	}
-	else if (!is_user_logged_in())
-	{
-		$html .= "<p>You must be logged in to see RSVPs.</p>";
-	}
-	else
-	{
-		// Show Yes RSVPs.
-		$rsvps = $rsvps_y;
-
-		if ($count_rsvps > 0)
 		{
-			$html .= '		    <ul>';
-
-			foreach ( $rsvps as $rsvp) {
-
-				$user_info   = get_userdata ($rsvp->user_id);
-
-				$avatar = '';
-					
-				if (isset ($user_info->user_login)) {
-					$avatar .= get_avatar ($rsvp->user_id, null, null, $user_info->user_login);
-				}
-					
-				$comment = stripslashes ($rsvp->comment); // De-escape the DB data.
-				$attend = $rsvp->attended;
-
-				$html .= '<li class="AvatarListSide bimbler-avatar-narrow">';
-					
-				// Output an innocuous DIV if the user cannot amend attendance, or if the Ajax module is not loaded.
-				if (!can_modify_attendance ()) {
-					$html .= '<div class="rsvp-checkin-container-noajax">';
-				}
-				else {
-					// Store the RSVP ID.
-					$html .= '<div class="rsvp-checkin-container" id="'. $rsvp->id .'">';
-				}
-					
-				// Only allow changes if this is the currently logged-in user or admin.
-				$html .= $avatar; // IMG.
-
-				// Only show if the event has ended or we're admin.
-				if (current_user_can( 'manage_options') || $has_event_passed)
-				{
-					$html .= '<div class="rsvp-checkin-indicator" id="rsvp-checkin-indicator-'. $rsvp->id .'">'; // Content will be replaced by Ajax.
-
-					if (!isset ($attend)) {
-						$html .= '<div class="rsvp-checkin-indicator-none"><i class="fa-question-circle"></i></div>';
-					} else if ('Y' == $attend) {
-						$html .= '<div class="rsvp-checkin-indicator-yes"><i class="fa-check-circle"></i></div>';
+			$html .= '<p>No RSVPs yet.</p>';
+		}
+		else if (!is_user_logged_in())
+		{
+			$html .= "<p>You must be logged in to see RSVPs.</p>";
+		}
+		else
+		{
+			// Show Yes RSVPs.
+			$rsvps = $rsvps_y;
+	
+			if ($count_rsvps > 0)
+			{
+				$html .= '		    <ul>';
+	
+				foreach ( $rsvps as $rsvp) {
+	
+					$user_info   = get_userdata ($rsvp->user_id);
+	
+					$avatar = '';
+						
+					if (isset ($user_info->user_login)) {
+						$avatar .= get_avatar ($rsvp->user_id, null, null, $user_info->user_login);
+					}
+						
+					$comment = stripslashes ($rsvp->comment); // De-escape the DB data.
+					$attend = $rsvp->attended;
+	
+					$html .= '<li class="AvatarListSide bimbler-avatar-narrow">';
+						
+					// Output an innocuous DIV if the user cannot amend attendance, or if the Ajax module is not loaded.
+					if (!can_modify_attendance ()) {
+						$html .= '<div class="rsvp-checkin-container-noajax">';
 					}
 					else {
-						$html .= '<div class="rsvp-checkin-indicator-no"><i class="fa-times-circle"></i></div>';
+						// Store the RSVP ID.
+						$html .= '<div class="rsvp-checkin-container" id="'. $rsvp->id .'">';
 					}
+						
+					// Use the new avatar style.
+					$html .= '						<div class="avatar-rsvps-clipped" style="background-image: url(\'' . bimbler_get_avatar_img($avatar)  . '\');"></div>' . PHP_EOL;
 
-					$html .= '</div>';
-				}
-
-				$html .= '</div> <!-- rsvp-checkin-container -->';
-
-				if (isset ($user_info->user_nicename)) {
-					$html .= '<p><a href="/profile/' . urlencode ($user_info->user_nicename) .'/">' . $user_info->nickname;
-
-					if ($rsvp->guests > 0) {
-						$html .= ' + ' . $rsvp->guests;
+					// Only allow changes if this is the currently logged-in user or admin.
+								
+					// Only show if the event has ended or we're admin.
+					if (current_user_can( 'manage_options') || $has_event_passed)
+					{
+						$html .= '<div class="rsvp-checkin-indicator" id="rsvp-checkin-indicator-'. $rsvp->id .'">'; // Content will be replaced by Ajax.
+	
+						if (!isset ($attend)) {
+							$html .= '<div class="rsvp-checkin-indicator-none"><i class="fa-question-circle"></i></div>';
+						} else if ('Y' == $attend) {
+							$html .= '<div class="rsvp-checkin-indicator-yes"><i class="fa-check-circle"></i></div>';
+						}
+						else {
+							$html .= '<div class="rsvp-checkin-indicator-no"><i class="fa-times-circle"></i></div>';
+						}
+	
+						$html .= '</div>';
 					}
-
-					$html .= '</a></p>';
+	
+					$html .= '</div> <!-- rsvp-checkin-container -->';
+	
+					if (isset ($user_info->user_nicename)) {
+						$html .= '<p><a href="/profile/' . urlencode ($user_info->user_nicename) .'/">' . $user_info->nickname;
+	
+						if ($rsvp->guests > 0) {
+							$html .= ' + ' . $rsvp->guests;
+						}
+	
+						$html .= '</a></p>';
+					}
+						
+					$html .= '</li>';
+				}
+	
+				$html .= '		    </ul>';
+	
+			}
+			// Show No RSVPs.
+			$rsvps = $rsvps_n;
+	
+			$count = count($rsvps_n);
+				
+			if ($count > 0)
+			{
+				if (1 == $count) {
+					$html .= '<p>'. count($rsvps) .' not attending:</p>';
+				} else {
+					$html .= '<p>'. count($rsvps) .' not attending:</p>';
 				}
 					
-				$html .= '</li>';
-			}
-
-			$html .= '		    </ul>';
-
-		}
-		// Show No RSVPs.
-		$rsvps = $rsvps_n;
-
-		$count = count($rsvps_n);
-			
-		if ($count > 0)
-		{
-			if (1 == $count) {
-				$html .= '<p>'. count($rsvps) .' not attending:</p>';
-			} else {
-				$html .= '<p>'. count($rsvps) .' not attending:</p>';
-			}
-				
-			$html .= '		    <ul>';
-				
-			foreach ( $rsvps_n as $rsvp) {
-
-				$comment = stripslashes ($rsvp->comment); // De-escape the DB data.
+				$html .= '		    <ul>';
 					
-				$user_info   = get_userdata ($rsvp->user_id);
-					
-				if (isset ($user_info->user_login)) {
-					$avatar = get_avatar ($rsvp->user_id, null, null, $user_info->user_login);
+				foreach ( $rsvps_n as $rsvp) {
+	
+					$comment = stripslashes ($rsvp->comment); // De-escape the DB data.
+						
+					$user_info   = get_userdata ($rsvp->user_id);
+						
+					if (isset ($user_info->user_login)) {
+						$avatar = get_avatar ($rsvp->user_id, null, null, $user_info->user_login);
+	
+						$html .= '<li class="AvatarListSide bimbler-avatar-narrow"><div class="permalink"></div>';
 
-					$html .= '<li class="AvatarListSide bimbler-avatar-narrow"><div class="permalink"></div><a href="">'. $avatar;
-
-					$html .= '<p><a href="/profile/' . urlencode ($user_info->user_nicename) .'/">' . $user_info->nickname;
-
-					$html .= '</a><p></li>';
+						// Use the new avatar style.
+						$html .= '						<div class="avatar-rsvps-clipped" style="background-image: url(\'' . bimbler_get_avatar_img($avatar)  . '\');"></div>' . PHP_EOL;
+						
+						$html .= '<p><a href="/profile/' . urlencode ($user_info->user_nicename) .'/">' . $user_info->nickname;
+	
+						$html .= '</a><p></li>';
+					}
 				}
+					
+				$html .= '		    </ul>';
 			}
-				
-			$html .= '		    </ul>';
 		}
-	}
-
-	//$html .= '		</form>';
-	$html .= '		    </div> <!-- #rsvp-list-->';
-	$html .= '		</div><!-- #footer Wrap-->';
-
-	echo $html;
+	
+		//$html .= '		</form>';
+		$html .= '		    </div> <!-- #rsvp-list-->';
+		$html .= '		</div><!-- #footer Wrap-->';
+	
+		echo $html;
 	}
 }
 
