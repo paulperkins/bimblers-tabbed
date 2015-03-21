@@ -507,6 +507,11 @@ function show_gps_download_widget () {
 	// Display the TCX, GPX and KML for this ride.
 	global $wp_query;
 
+	// Don't display to non logged-in users.
+	if (!is_user_logged_in()) {
+		return;	
+	}
+	
 	// Fix bug for erroneously showing widget on front page - user get_queried_object_id.
 	$post_id = get_queried_object_id();
 
