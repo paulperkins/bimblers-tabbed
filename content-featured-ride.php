@@ -3,6 +3,8 @@
 	
 <?php 
 
+	$date_str = 'D j M';
+
 	date_default_timezone_set('Australia/Brisbane');
 
 	// Get the details of the first ride.
@@ -34,6 +36,8 @@
 		$ride_rwgps = 0;
 	}
 	
+	$start_date = tribe_get_start_date($event->ID, false, $date_str);
+	
 	//$map_style = "width: 425px; height: 200px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;";
 	$map_style = "width: 100%; height: 200px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;";
 	
@@ -45,7 +49,7 @@
 		</div><!--/.post-thumbnail-->
 				
 		<h2 class="post-title">
-			<a href="<?php echo $ride_url; ?>" rel="bookmark" title="<?php echo $ride_title; ?>">Next ride: <?php echo $ride_title; ?></a>
+			<a href="<?php echo $ride_url; ?>" rel="bookmark" title="<?php echo $ride_title; ?>">Next ride: <?php echo $ride_title; ?> on <?php echo $start_date; ?></a>
 			</h2><!--/.post-title-->
 		
 		<?php if (ot_get_option('excerpt-length') != '0'): ?>
