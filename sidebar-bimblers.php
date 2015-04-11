@@ -613,7 +613,10 @@ function show_edit_attendees_widget () {
 
 	$sidebar = alx_sidebar_primary();
 	$layout = alx_layout_class();
-	if ( $layout != 'col-1c'):
+	
+//	error_log('Displaying: "' . TribeEvents::instance()->displaying . '"');
+	
+	if (1 && ($layout != 'col-1c')):
 ?>
 	
 		<div class="sidebar s1">

@@ -159,4 +159,7 @@ padding: 18px 34px;
 }
 	
 	
-
+/* Prevent tribe dropdown Z-ordering itself above the menu bar. */
+#tribe-bar-views .tribe-bar-views-list {
+  z-index: 50; 
+}
