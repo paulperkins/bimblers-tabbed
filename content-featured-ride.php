@@ -8,15 +8,19 @@
 	date_default_timezone_set('Australia/Brisbane');
 
 	// Get the details of the first ride.
-	$get_posts = tribe_get_events(array(
-			'eventDisplay'		=> 'all',
-			//'start_date' 		=> date('Y-m-d', strtotime('1 days')), // From tomorrow - we should already be at today's ride.
-			'start_date' 		=> date('Y-m-d H:i:s'), // From now, not midnight - we should already be at today's ride.
-			'posts_per_page' 	=> 1) );
-	
-	$event = $get_posts[0];
+	$get_posts = tribe_get_events( array(
+					'eventDisplay' 	=> 'custom',
+					'posts_per_page'=>	1,
+					'meta_query' 	=> array(
+							array(
+								'key' 		=> '_EventStartDate',
+								'value' 	=> date('Y-m-d H:i:s'),
+								'compare' 	=> '>',
+								'type' 		=> 'date'
+							)
+						)));
 
-	//$event->ID = 4258; // Testing.
+	$event = $get_posts[0];
 	
 	$ride_title = $event->post_title; 
 	$ride_url 	= get_permalink ($event->ID);
