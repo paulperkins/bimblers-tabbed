@@ -220,6 +220,8 @@ function show_rsvp_table () {
 		$rsvps_n = Bimbler_RSVP::get_instance()->get_event_rsvp_object ($postid, 'N');
 		$count_rsvps = Bimbler_RSVP::get_instance()->count_rsvps ($postid);
 		$count_atts = Bimbler_RSVP::get_instance()->count_attendees ($postid);
+
+		$host_users = Bimbler_RSVP::get_instance()->get_event_host_users ($postid);
 		
 		if (null === $count_atts) {
 			$count_atts = 0;
@@ -319,7 +321,14 @@ function show_rsvp_table () {
 							$html .= ' + ' . $rsvp->guests;
 						}
 	
-						$html .= '</a></p>';
+						$html .= '</a>';
+
+						if (in_array ($user_info->id, $host_users)) {
+							$html .= '<br>(Host)'; 
+						}
+
+						$html .= '</p>';
+						
 					}
 						
 					$html .= '</li>';
