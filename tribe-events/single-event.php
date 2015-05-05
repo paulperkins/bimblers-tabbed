@@ -175,21 +175,13 @@ function show_rsvp_tablex () {
 }
 
 /*
- * Determines if the user can execute Ajax, and checks if the Ajax Bimbler plugin is loaded.
+ * Determines if the user can execute Ajax, and checks if the Ajax Bimbler plugin is loaded, 
+ * sees if the user is a host.
 */
-function can_modify_attendance () {
+function can_modify_attendance ($event_id = null) {
 
-	if (!class_exists (BIMBLER_AJAX_CLASS)) {
-		error_log ('User can\'t run Ajax - BIMBLER_AJAX_CLASS not loaded.');
-		return false;
-	}
+	return Bimbler_RSVP::get_instance()->can_modify_attendance($event_id);
 
-	if (!current_user_can ('manage_options')) {
-		//error_log ('User can\'t run Ajax - not an admin.');
-		return false;
-	}
-
-	return true;
 }
 
 
@@ -234,7 +226,7 @@ function show_rsvp_table () {
 		$html .= '  <div id="yes-count" style="float: left;">' . $count_rsvps .'</div>';
 		$html .= '</div>';
 
-		if (can_modify_attendance ()) {
+		if (can_modify_attendance ($postid)) {
 			$html .= '<div class="bimbler-count-tags" style="overflow-y: hidden;">';
 				
 			if ($has_event_passed) {
@@ -282,7 +274,7 @@ function show_rsvp_table () {
 					$html .= '<li class="AvatarListSide bimbler-avatar-narrow">';
 						
 					// Output an innocuous DIV if the user cannot amend attendance, or if the Ajax module is not loaded.
-					if (!can_modify_attendance ()) {
+					if (!can_modify_attendance ($postid)) {
 						$html .= '<div class="rsvp-checkin-container-noajax">';
 					}
 					else {
@@ -293,10 +285,8 @@ function show_rsvp_table () {
 					// Use the new avatar style.
 					$html .= '						<div class="avatar-rsvps-clipped" style="background-image: url(\'' . bimbler_get_avatar_img($avatar)  . '\');"></div>' . PHP_EOL;
 
-					// Only allow changes if this is the currently logged-in user or admin.
-								
-					// Only show if the event has ended or we're admin.
-					if (current_user_can( 'manage_options') || $has_event_passed)
+					// Only show if the event has ended or we're admin / host.
+					if (can_modify_attendance ($postid) || $has_event_passed)
 					{
 						$html .= '<div class="rsvp-checkin-indicator" id="rsvp-checkin-indicator-'. $rsvp->id .'">'; // Content will be replaced by Ajax.
 	
