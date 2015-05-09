@@ -5,21 +5,7 @@
 
 	$date_str = 'D j M';
 
-	date_default_timezone_set('Australia/Brisbane');
-
-	// Get the details of the first ride.
-	$get_posts = tribe_get_events( array(
-					'eventDisplay' 	=> 'custom',
-					'posts_per_page'=>	1,
-					'meta_query' 	=> array(
-							array(
-								'key' 		=> '_EventStartDate',
-								'value' 	=> date('Y-m-d H:i:s'),
-								'compare' 	=> '>',
-								'type' 		=> 'date'
-							)
-						)
-						));
+	$get_posts = Bimbler_RSVP::get_instance()->get_next_event();
 
 	$event = $get_posts[0];
 	
