@@ -18,7 +18,8 @@
 								'compare' 	=> '>',
 								'type' 		=> 'date'
 							)
-						)));
+						)
+						));
 
 	$event = $get_posts[0];
 	
