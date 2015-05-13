@@ -608,22 +608,22 @@ function bimbler_create_tabs($tabs,$count, $event_id) {
 
 	$text_style = 'none';
 	
-	$output = sprintf('	<ul class="alx-tabs-nav group tab-count-%s">', $count) . PHP_EOL;
+	$output = sprintf('	<ul class="bimbler-tabs-nav group tab-count-%s">', $count) . PHP_EOL;
 	foreach ( $tabs as $tab ) {
 
 		// Show text.
 		if (1) {
 			if ($counts[$tab] > 0) {
-				$output .= sprintf('		<li class="alx-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s" data-notifications="%5$s"><i class="%3$s"></i><span>%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab], $counts[$tab]) . PHP_EOL;
+				$output .= sprintf('		<li class="bimbler-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s" data-notifications="%5$s"><i class="%3$s"></i><span>%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab], $counts[$tab]) . PHP_EOL;
 			} else {
-				//$output .= sprintf('<li class="alx-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i><span style="display: block;">%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]);
-				$output .= sprintf('		<li class="alx-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i><span>%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]) . PHP_EOL;
+				//$output .= sprintf('<li class="bimbler-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i><span style="display: block;">%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]);
+				$output .= sprintf('		<li class="bimbler-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i><span>%4$s</span></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]) . PHP_EOL;
 			}
 		} else {
 			if ($counts[$tab] > 0) {
-				$output .= sprintf('		<li class="alx-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s" data-notifications="%5$s"><i class="%3$s"></i></a></li>',$tab, $tab, $icons[$tab], $titles[$tab], $counts[$tab]) . PHP_EOL;
+				$output .= sprintf('		<li class="bimbler-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s" data-notifications="%5$s"><i class="%3$s"></i></a></li>',$tab, $tab, $icons[$tab], $titles[$tab], $counts[$tab]) . PHP_EOL;
 			} else {
-				$output .= sprintf('		<li class="alx-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]) . PHP_EOL;
+				$output .= sprintf('		<li class="bimbler-tab bimbler-badge tab-%1$s"><a href="#tab-%2$s" title="%4$s"><i class="%3$s"></i></a></li>',$tab, $tab, $icons[$tab], $titles[$tab]) . PHP_EOL;
 			}
 		}
 	}
@@ -689,9 +689,9 @@ $scroller_style = '';
 	{
 ?>
 
-	<div class="alx-tabs-container" <?php echo $scroller_style; ?>>
+	<div class="bimbler-tabs-container" <?php echo $scroller_style; ?>>
 	
-		<ul id="tab-event-summary" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-summary" class="bimbler-tab group avatars-enabled">
 
 			<div class="pad group">
 
@@ -702,7 +702,7 @@ $scroller_style = '';
 		</ul> <!-- tab-event-summary -->
 
 		
-		<ul id="tab-event-details" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-details" class="bimbler-tab group avatars-enabled">
 		
 		
 			<div class="pad group">
@@ -716,7 +716,7 @@ $scroller_style = '';
 			</div>	
 		</ul> <!-- tab-event-details -->
 
-		<ul id="tab-event-map" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-map" class="bimbler-tab group avatars-enabled">
 			<div class="pad group">
 		
 			<?php bimber_show_map_page(); ?>
@@ -725,7 +725,7 @@ $scroller_style = '';
 		</ul> <!-- tab-event-rsvps -->
 
 		
-		<ul id="tab-event-rsvps" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-rsvps" class="bimbler-tab group avatars-enabled">
 			<div class="pad group">
 			
 			<div class="entry themeform">
@@ -740,7 +740,7 @@ $scroller_style = '';
 		</ul> <!-- tab-event-rsvps -->
 
 		
-		<ul id="tab-event-photos" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-photos" class="bimbler-tab group avatars-enabled">
 			<div class="pad group">
 			
 			<div class="entry themeform">
@@ -753,7 +753,7 @@ $scroller_style = '';
 		</ul> <!-- tab-event-photos -->
 
 		
-		<ul id="tab-event-comments" class="alx-tab group avatars-enabled">
+		<ul id="tab-event-comments" class="bimbler-tab group avatars-enabled">
 			<div class="pad group">
 		
 			<h4>Comments Here</h4>
@@ -763,7 +763,7 @@ $scroller_style = '';
 			</div>	
 		</ul> <!-- tab-event-comments -->
 		
-	</div> <!-- alx-tabs-container -->
+	</div> <!-- bimbler-tabs-container -->
 	
 <?php 
 	} // Check if the user is logged-in - this page should only be visible if they are.
