@@ -15,13 +15,13 @@
 -------------------------------------------------------------- */
 
 /* PP - Google map fix: make the zoom controls visible. */
-.tribe-events-venue-map img { max-width: inherit !important; }
+/*.tribe-events-venue-map img { max-width: inherit !important; }
 .bimbler-locator img { max-width: inherit !important; }
 #bimbler-next-ride-map img { max-width: inherit !important; }
-
+*/
 
 /* PP - Make NGG responsive. */
-.ngg-slideshow, .ngg-slideshow img{
+/*.ngg-slideshow, .ngg-slideshow img{
   max-width:100%;
   height: auto;
 }
@@ -38,6 +38,7 @@
 	border-bottom: 0px;}
 	
 .alx-tabs-nav.tab-count-5 li { width: 20%; }
+*/
 
 /*::selection { background-color: #dd9933; }
 ::-moz-selection { background-color: #dd9933; } */
@@ -61,7 +62,7 @@
 .jp-volume-bar-value,
 .widget_calendar caption { background-color: #dd9933; } */
 
-.alx-tabs-nav li.active a { border-bottom-color: #dd9933;  }
+/*.alx-tabs-nav li.active a { border-bottom-color: #dd9933;  }
 .post-comments span:before { border-right-color: #dd9933; }				
 
 
@@ -74,7 +75,7 @@ border-bottom-color: #dd9933!important;
  { color: #777777!important;}
  
 .bimbler-badge a i
- { font-size: 30px;}
+ { font-size: 30px;}*/
  
 /*.bimbler-badge a span
 { display:block;}
@@ -89,7 +90,7 @@ border-bottom-color: #dd9933!important;
  
  
  
-.alx-tab img {display:inline; width: auto; } 
+/*.alx-tab img {display:inline; width: auto; } */
 
 /* Make buttons nice again. */
 /*  base : forms
@@ -160,6 +161,6 @@ padding: 18px 34px;
 	
 	
 /* Prevent tribe dropdown Z-ordering itself above the menu bar. */
-#tribe-bar-views .tribe-bar-views-list {
+/*#tribe-bar-views .tribe-bar-views-list {
   z-index: 50; 
-}
+}*/
