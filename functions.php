@@ -24,23 +24,6 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	show_admin_bar( false );
 }
 
-
-// Encourage facebook to use the bimbler flag image as the preferred preview image.
-function bimbler_add_og_image()
-{
-	$output  = '<meta property="og:image" content="http://bimblers.com/wp-content/uploads/2014/04/bimbler_flag-520x245.jpeg" />' . PHP_EOL;
-	$output .= '<meta property="og:url" content="http://bimblers.com" />' . PHP_EOL;
-	$output .= '<meta property="og:type" content="website" />' . PHP_EOL;
-	$output .= '<meta property="og:title" content="bimblers.com - Brisbane Bimblers Cycling" />' . PHP_EOL;
-	$output .= '<meta property="og:description" content="The Brisbane Bimblers’ Cycling Group is a light-hearted group of cyclists who love to get out and about on two wheels, but don’t take themselves too seriously." />' . PHP_EOL;
-	
-	echo $output;
-}
-
-add_action('wp_head','bimbler_add_og_image');
-
-
-
 /*
  * Generates CSS elements which contain the 'Primary Color' setting in the Theme's 'Styling' configuration.
  */
